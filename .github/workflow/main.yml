@@ -9,8 +9,12 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - name: Invoke update hook
-        uses: distributhor/workflow-webhook@v1
-        env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+      - uses: webfactory/ssh-agent@v0.5.2
+        with:
+            ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: set up ssh hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo ${{ secrets.SSH_CONFIG }} > ~/.ssh/config
+      - name: invoke update hook
+        run: ssh pasteur
