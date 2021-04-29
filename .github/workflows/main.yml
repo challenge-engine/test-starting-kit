@@ -15,6 +15,6 @@ jobs:
       - name: set up ssh hosts
         run: |
           mkdir -p ~/.ssh
-          echo ${{ secrets.SSH_CONFIG }} > ~/.ssh/config
+          echo "${{ secrets.SSH_CONFIG }}" > ~/.ssh/config
       - name: invoke update hook
         run: ssh pasteur
