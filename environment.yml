@@ -1,0 +1,14 @@
+name: challenge-engine
+channels:
+  - default
+  - conda-forge
+dependencies:
+  - python=3.7.*
+  - sphinx=3.5.1
+  - pip
+  - git
+  - matplotlib
+  - numpy==1.20.2
+  - pandas==1.2.4
+  - nibabel==3.2.1
+  - scikit-learn==0.24.2
